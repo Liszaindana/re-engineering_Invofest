@@ -30,7 +30,7 @@ export default function RegistrasiEvent() {
 
     return (
         <div>
-            <form action="" onSubmit={handleSubmit((data) => alert("Pendaftaran event berhasil!"))}>
+            <form action="" onSubmit={handleSubmit(() => alert("Pendaftaran event berhasil!"))}>
                 <FormInput 
                 text="Nama" 
                 tipe="text" 
