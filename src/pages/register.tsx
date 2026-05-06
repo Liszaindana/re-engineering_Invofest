@@ -1,8 +1,9 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import {z} from "zod";
+import { z } from "zod";
 import FormInput from "../components/FormInput";
 import Button from "../components/ui/Button";
+import { Link } from "react-router-dom";
 
 // schema validation
 const registerSchema = z.object({
@@ -16,11 +17,11 @@ const registerSchema = z.object({
 });
 
 export default function Register() {
-  const { 
-    register, 
-    handleSubmit, 
+  const {
+    register,
+    handleSubmit,
     formState: { errors }
- } = useForm({
+  } = useForm({
     resolver: zodResolver(registerSchema),
     mode: 'onChange',
     defaultValues: {
@@ -32,40 +33,56 @@ export default function Register() {
   });
 
   return (
-    <div>
-        <form action="" onSubmit={handleSubmit((data) => console.log(data))}>
-            <FormInput 
-            text="Nama" 
-            tipe="text" 
-            name="nama" 
-            register={register} 
-            error={errors.nama?.message} />
+    <div style={{ width: "100%" }}>
+      <div style={{ marginBottom: "32px" }}>
+        <h1 style={{ fontSize: "32px", fontWeight: 800, color: "#1F2937", marginBottom: "8px" }}>Daftar Akun</h1>
+        <p style={{ color: "#6B7280", fontSize: "16px" }}>Lengkapi data di bawah untuk membuat akun baru.</p>
+      </div>
 
-            <FormInput 
-            text="Email" 
-            tipe="text" 
-            name="email" 
-            register={register} 
-            error={errors.email?.message} />
+      <form onSubmit={handleSubmit((data) => console.log(data))} style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+        <FormInput
+          text="Nama Lengkap"
+          tipe="text"
+          name="nama"
+          register={register}
+          error={errors.nama?.message as string}
+        />
 
-            <FormInput 
-            text="Password" 
-            tipe="password" 
-            name="password" 
-            register={register} 
-            error={errors.password?.message} />
+        <FormInput
+          text="Email Address"
+          tipe="text"
+          name="email"
+          register={register}
+          error={errors.email?.message as string}
+        />
 
-            <FormInput 
-            text="Konfirmasi Password" 
-            tipe="password" 
-            name="confirm_password" 
-            register={register} 
-            error={errors.confirm_password?.message} />
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px" }}>
+          <FormInput
+            text="Password"
+            tipe="password"
+            name="password"
+            register={register}
+            error={errors.password?.message as string}
+          />
 
-            <div>
-                <Button label="Register" variant="primary" />
-            </div>
-        </form>
+          <FormInput
+            text="Konfirmasi Password"
+            tipe="password"
+            name="confirm_password"
+            register={register}
+            error={errors.confirm_password?.message as string}
+          />
+        </div>
+
+        <div style={{ marginTop: "20px" }}>
+          <Button label="DAFTAR SEKARANG" variant="primary" />
+        </div>
+
+        <p style={{ textAlign: "center", marginTop: "24px", color: "#6B7280", fontSize: "15px" }}>
+          Sudah punya akun?{" "}
+          <Link to="/login" style={{ color: "#8B1E3F", fontWeight: 700, textDecoration: "none" }}>Login Di Sini</Link>
+        </p>
+      </form>
     </div>
   );
 }

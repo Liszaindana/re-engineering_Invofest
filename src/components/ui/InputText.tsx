@@ -10,7 +10,7 @@ const InputText: React.FC<InputTextProps> = ({ tipe, name, eror, ...props }) => 
         type={tipe}
         name={name}
         {...props}
-        className={`border p-2 rounded-md focus:border-amber-900 outline-none bg-zinc-300 ${eror ? "bg-red-500 border-red-500" : "border-gray-300"}`}
+        className={`border p-3 rounded-lg focus:border-[#8B1E3F] focus:ring-1 focus:ring-[#8B1E3F] outline-none bg-white transition-all ${eror ? "bg-red-50 border-red-500" : "border-gray-200"}`}
         />
     );  
 };

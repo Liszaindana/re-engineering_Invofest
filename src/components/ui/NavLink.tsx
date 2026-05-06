@@ -16,6 +16,18 @@ const NavLink: React.FC<NavLinkProps> = ({
   const [isHover, setIsHover] = React.useState(false);
   const primary = "#8B1E3F";
 
+  const activeStyle = {
+    color: primary,
+    fontWeight: 700,
+    backgroundColor: "rgba(139, 30, 63, 0.15)",
+  };  
+
+  const defaultStyle = {
+    color: isHover ? primary : "#333",
+    fontWeight: isHover ? 700 : 500,
+    backgroundColor: isHover ? "rgba(139, 30, 63, 0.08)" : "transparent",
+  };
+
   return (
     <a
       href={href}

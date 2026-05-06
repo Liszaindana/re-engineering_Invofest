@@ -1,73 +1,74 @@
-# React + TypeScript + Vite
+# INVOFEST 2025 - Re-engineering Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![INVOFEST Banner](https://www.invofest-harkatnegeri.com/assets/nav-logo.png)
 
-Currently, two official plugins are available:
+**INVOFEST (Informatics Vocational Festival)** adalah proyek re-engineering landing page festival vokasi informatika tahunan. Proyek ini bertujuan untuk menciptakan antarmuka yang modern, premium, dan responsif dengan fokus pada pengalaman pengguna yang luar biasa (*User Experience*) dan keselarasan visual yang tinggi (*High Fidelity*).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Fitur Utama
 
-## React Compiler
+- **Desain Premium & Modern**: Menggunakan palet warna brand INVOFEST (Maroon #8B1E3F) dengan aksen *glassmorphism* dan transisi *wave* yang dinamis.
+- **Halaman Event Lengkap**: Dokumentasi visual dan informasi detail untuk Seminar, Workshop, Talkshow, dan Kompetisi.
+- **Komponen Reusable**: Arsitektur berbasis komponen seperti `SpeakerCard`, `HeroSection`, `Collaps` (FAQ), dan `FormInput`.
+- **Sistem Otentikasi Terpadu**: Halaman Login dan Register yang simetris dan divalidasi menggunakan Zod & React Hook Form.
+- **Responsif Penuh**: Layout yang dioptimalkan untuk berbagai ukuran perangkat (Desktop, Tablet, Mobile).
+- **SEO Optimized**: Struktur HTML semantik untuk visibilitas mesin pencari yang lebih baik.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Tech Stack
 
-## Expanding the ESLint configuration
+- **Framework**: [React 19](https://react.dev/)
+- **Build Tool**: [Vite 8](https://vitejs.dev/)
+- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/) & Vanilla CSS
+- **Routing**: [React Router Dom 7](https://reactrouter.com/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Validation**: [Zod](https://zod.dev/) & [React Hook Form](https://react-hook-form.com/)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 📂 Struktur Proyek
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```text
+src/
+├── components/         # Komponen UI yang dapat digunakan kembali
+│   ├── ui/             # Komponen atomik (Button, Input, Card, dll)
+│   ├── Header.tsx      # Navigasi utama
+│   └── Footer.tsx      # Footer global
+├── layout/             # Wrapper layout (MainLayout, AuthLayout)
+├── pages/              # Halaman utama aplikasi
+│   ├── Beranda.tsx
+│   ├── Competition.tsx
+│   ├── Seminar.tsx
+│   ├── Workshop.tsx
+│   ├── Talkshow.tsx
+│   ├── Login.tsx
+│   └── register.tsx
+├── App.tsx             # Konfigurasi routing
+└── main.tsx            # Entry point aplikasi
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🏁 Memulai (Local Setup)
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+1. **Clone repositori**
+   ```bash
+   git clone <repository-url>
+   ```
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+2. **Instal dependensi**
+   ```bash
+   npm install
+   ```
+
+3. **Jalankan server pengembangan**
+   ```bash
+   npm run dev
+   ```
+   Aplikasi akan berjalan di `http://localhost:5173/`
+
+4. **Build untuk produksi**
+   ```bash
+   npm run build
+   ```
+
+## ✒️ Penulis
+
+Dikembangkan dengan dedikasi untuk **INVOFEST 2025**.
+
+---
+*© 2025 Informatics Vocational Festival. All Rights Reserved.*
