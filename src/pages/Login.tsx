@@ -14,6 +14,7 @@ const loginSchema = z.object({
 export default function Login() {
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: zodResolver(loginSchema),
+    mode: "onChange",
   });
 
   return (
@@ -38,7 +39,7 @@ export default function Login() {
           name="password"
           register={register}
           error={errors.password?.message as string}
-        />
+        /> 
 
         <div style={{ display: "flex", justifyContent: "flex-end", marginTop: "-12px" }}>
           <Link to="#" style={{ color: "#8B1E3F", fontSize: "14px", textDecoration: "none", fontWeight: 600 }}>Lupa Password?</Link>

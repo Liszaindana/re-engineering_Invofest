@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 // schema validation
 const registerSchema = z.object({
   nama: z.string().min(1, "Nama harus diisi"),
-  email: z.string().email("Email tidak valid"),
+  email: z.string().min(1, "Email harus diisi").email("Format email tidak valid"),
   password: z.string().min(8, "Password minimal 8 karakter"),
   confirm_password: z.string().min(8, "Konfirmasi Password minimal 8 karakter"),
 }).refine((data) => data.password === data.confirm_password, {

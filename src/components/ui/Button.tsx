@@ -1,12 +1,12 @@
 import React from "react";
 
-interface ButtonProps {
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   label: string;
   variant?: "primary" | "outline";
   className?: string;
 }
 
-const Button: React.FC<ButtonProps> = ({ label, variant = "primary", className = "" }) => {
+const Button: React.FC<ButtonProps> = ({ label, variant = "primary", className = "", ...props }) => {
   const [isHover, setIsHover] = React.useState(false);
   const primary = "#8B1E3F";
   const primaryHover = "#6F1631";
@@ -18,6 +18,7 @@ const Button: React.FC<ButtonProps> = ({ label, variant = "primary", className =
 
   return (
     <button
+      {...props}
       className={`${baseClass} p-2 px-4 rounded ${className}`}
       style={{
         backgroundColor: variant === "primary" ? (isHover ? primaryHover : primary) : (isHover ? primary : "transparent"),

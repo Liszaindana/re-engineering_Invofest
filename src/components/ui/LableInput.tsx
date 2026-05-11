@@ -4,7 +4,14 @@ interface LabelInputProps {
 }
 
 const LabelInput: React.FC<LabelInputProps> = ({ text, title }) => {
-    return <label htmlFor={text} style={{ fontSize: "14px", fontWeight: 600, color: "#4B5563", marginBottom: "4px" }}>{title}</label>;
+  return (
+    <label
+      htmlFor={text}
+      className="text-sm font-semibold text-gray-600 mb-1 block"
+    >
+      {title}
+    </label>
+  );
 };
 
-export default LabelInput;
+export default LabelInput;
