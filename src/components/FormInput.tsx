@@ -2,7 +2,8 @@ import InputText from './ui/InputText.tsx';
 import LabelInput from "./ui/LableInput";
 
 interface FormInputProps {
-    label: string;
+    label?: string;
+    text?: string;
     tipe: string;
     name: string;
     register: any;
@@ -11,10 +12,10 @@ interface FormInputProps {
     rows?: number;
 }
 
-const FormInput: React.FC<FormInputProps> = ({ label, tipe, name, register, error, placeholder, rows }) => {
+const FormInput: React.FC<FormInputProps> = ({ label, text, tipe, name, register, error, placeholder, rows }) => {
     return (
         <div className="flex flex-col gap-1">
-            <LabelInput text={name} title={label} />
+            <LabelInput text={name} title={label || text || ""} />
             <InputText 
                 tipe={tipe} 
                 name={name} 
