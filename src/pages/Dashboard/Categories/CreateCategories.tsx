@@ -28,7 +28,7 @@ export default function CreateCategory() {
                 <p className="text-gray-500 mb-8 text-sm">Silahkan isi semua data dengan benar</p>
 
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-                    <FormInput label="Nama" tipe="text" name="nama" register={register} error={errors.nama?.message} />
+                    <FormInput label="Nama" type="text" name="nama" register={register} error={errors.nama?.message} />
 
                     <div className="pt-4">
                         <Button label="Simpan" variant="primary" type="submit" />

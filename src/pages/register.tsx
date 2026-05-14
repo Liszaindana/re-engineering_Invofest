@@ -21,7 +21,7 @@ export default function Register() {
     register,
     handleSubmit,
     formState: { errors }
-  } = useForm({
+  } = useForm<z.infer<typeof registerSchema>>({
     resolver: zodResolver(registerSchema),
     mode: 'onChange',
     defaultValues: {
@@ -42,7 +42,7 @@ export default function Register() {
       <form onSubmit={handleSubmit((data) => console.log(data))} style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
         <FormInput
           label="Nama Lengkap"
-          tipe="text"
+          type="text"
           name="nama"
           register={register}
           error={errors.nama?.message}
@@ -50,7 +50,7 @@ export default function Register() {
 
         <FormInput
           label="Email Address"
-          tipe="text"
+          type="text"
           name="email"
           register={register}
           error={errors.email?.message}
@@ -59,7 +59,7 @@ export default function Register() {
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px" }}>
           <FormInput
             label="Password"
-            tipe="password"
+            type="password"
             name="password"
             register={register}
             error={errors.password?.message}
@@ -67,7 +67,7 @@ export default function Register() {
 
           <FormInput
             label="Konfirmasi Password"
-            tipe="password"
+            type="password"
             name="confirm_password"
             register={register}
             error={errors.confirm_password?.message}

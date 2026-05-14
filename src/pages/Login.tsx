@@ -5,7 +5,6 @@ import { z } from "zod";
 import Button from "../components/ui/Button";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuthStore } from "../store/useAuthStore";
-import { Navigate } from "react-router-dom";
 
 
 
@@ -48,7 +47,7 @@ export default function Login() {
 
         <FormInput
           label="Email Address"
-          tipe="text"
+          type="text"
           name="email"
           register={register}
           error={errors.email?.message}
@@ -56,7 +55,7 @@ export default function Login() {
 
         <FormInput
           label="Password"
-          tipe="password"
+          type="password"
           name="password"
           register={register}
           error={errors.password?.message}

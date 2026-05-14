@@ -39,7 +39,7 @@ export default function CreateNewEvent() {
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                     <FormInput 
                         label="Nama" 
-                        tipe="text" 
+                        type="text" 
                         name="nama" 
                         register={register} 
                         error={errors.nama?.message} 
@@ -48,7 +48,7 @@ export default function CreateNewEvent() {
                     
                     <FormInput 
                         label="Category" 
-                        tipe="text" 
+                        type="text" 
                         name="category" 
                         register={register} 
                         error={errors.category?.message} 
@@ -57,7 +57,7 @@ export default function CreateNewEvent() {
 
                     <FormInput 
                         label="Lokasi" 
-                        tipe="text" 
+                        type="text" 
                         name="lokasi" 
                         register={register} 
                         error={errors.lokasi?.message} 
@@ -66,7 +66,7 @@ export default function CreateNewEvent() {
 
                     <FormInput 
                         label="Tanggal" 
-                        tipe="date" 
+                        type="date" 
                         name="tanggal" 
                         register={register} 
                         error={errors.tanggal?.message} 
@@ -74,7 +74,7 @@ export default function CreateNewEvent() {
 
                     <FormInput 
                         label="Deskripsi" 
-                        tipe="textarea" 
+                        type="textarea" 
                         name="deskripsi" 
                         register={register} 
                         error={errors.deskripsi?.message} 

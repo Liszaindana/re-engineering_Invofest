@@ -1,33 +1,42 @@
+import type { UseFormRegister, FieldValues, Path } from 'react-hook-form';
 import InputText from './ui/InputText.tsx';
 import LabelInput from "./ui/LableInput";
 
-interface FormInputProps {
-    label?: string;
-    text?: string;
-    tipe: string;
-    name: string;
-    register: any;
-    error?: any;
+interface FormInputProps<T extends FieldValues> {
+    label: string;
+    type: string;
+    name: Path<T>;
+    register: UseFormRegister<T>;
+    error?: any; // Changed to any to accept FieldError or string
     placeholder?: string;
     rows?: number;
 }
 
-const FormInput: React.FC<FormInputProps> = ({ label, text, tipe, name, register, error, placeholder, rows }) => {
+const FormInput = <T extends FieldValues>({ 
+    label, 
+    type, 
+    name, 
+    register, 
+    error, 
+    placeholder, 
+    rows 
+}: FormInputProps<T>) => {
+    // Extract message if error is an object
+    const errorMessage = error?.message || (typeof error === 'string' ? error : undefined);
+
     return (
-        <div className="flex flex-col gap-1">
-            <LabelInput text={name} title={label || text || ""} />
+        <div className="flex flex-col gap-1 w-full">
+            <LabelInput text={name} title={label} />
             <InputText 
-                tipe={tipe} 
-                name={name} 
+                type={type} 
                 {...register(name)} 
                 placeholder={placeholder} 
-                error={error} 
+                error={errorMessage} 
                 rows={rows}
             />
-            {error && <p className="text-red-500 text-xs mt-1">{typeof error === 'string' ? error : error.message}</p>}
+            {errorMessage && <p className="text-red-500 text-xs mt-1">{errorMessage}</p>}
         </div>
     );
 };
 
-
-export default FormInput;
+export default FormInput;

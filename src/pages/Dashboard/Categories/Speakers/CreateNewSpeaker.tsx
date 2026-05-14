@@ -33,11 +33,11 @@ export default function CreateSpeaker() {
                 <p className="text-gray-500 mb-8 text-sm">Silahkan isi semua data dengan benar</p>
 
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-                    <FormInput label="Nama" tipe="text" name="nama" register={register} error={errors.nama?.message} placeholder="Masukkan nama speaker" />
+                    <FormInput label="Nama" type="text" name="nama" register={register} error={errors.nama?.message} placeholder="Masukkan nama speaker" />
                     
-                    <FormInput label="Role" tipe="text" name="role" register={register} error={errors.role?.message} placeholder="Masukkan role (contoh: Senior Designer)" />
+                    <FormInput label="Role" type="text" name="role" register={register} error={errors.role?.message} placeholder="Masukkan role (contoh: Senior Designer)" />
                     
-                    <FormInput label="Foto" tipe="file" name="foto" register={register} error={errors.foto?.message} />
+                    <FormInput label="Foto" type="file" name="foto" register={register} error={errors.foto?.message} />
 
                     <div className="pt-4">
                         <Button label="Simpan" variant="primary" type="submit" className="px-10" />
