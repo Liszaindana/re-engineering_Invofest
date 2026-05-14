@@ -13,23 +13,28 @@ const schema = z.object({
 });
 
 export default function CreateCategory() {
-    const { register, handleSubmit, formState: { errors } } = useForm({
+    const { register, handleSubmit, formState: { errors } } = useForm<FormData>({
         resolver: zodResolver(schema),
-});
+        mode: "onChange",
+    });
 
-const onSubmit = (data: FormData) => {
-    console.log(data);
-}
+    const onSubmit = (data: FormData) => {
+        console.log(data);
+    }
     return (
-        <div>
-            <h1>Create new Category</h1>
-            <p>Silahkan isi semua data dengan benar</p>
+        <div className="w-full">
+            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 w-full">
+                <h1 className="text-2xl font-bold text-gray-800 mb-2">Create new Category</h1>
+                <p className="text-gray-500 mb-8 text-sm">Silahkan isi semua data dengan benar</p>
 
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <FormInput text="nama" tipe="text" name="nama" register={register} error={errors.nama?.message as string} />
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                    <FormInput label="Nama" tipe="text" name="nama" register={register} error={errors.nama?.message} />
 
-            <Button label="Simpan" variant="primary" type="submit" />
-            </form>
+                    <div className="pt-4">
+                        <Button label="Simpan" variant="primary" type="submit" />
+                    </div>
+                </form>
+            </div>
         </div>
     );
 }

@@ -41,36 +41,36 @@ export default function Register() {
 
       <form onSubmit={handleSubmit((data) => console.log(data))} style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
         <FormInput
-          text="Nama Lengkap"
+          label="Nama Lengkap"
           tipe="text"
           name="nama"
           register={register}
-          error={errors.nama?.message as string}
+          error={errors.nama?.message}
         />
 
         <FormInput
-          text="Email Address"
+          label="Email Address"
           tipe="text"
           name="email"
           register={register}
-          error={errors.email?.message as string}
+          error={errors.email?.message}
         />
 
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px" }}>
           <FormInput
-            text="Password"
+            label="Password"
             tipe="password"
             name="password"
             register={register}
-            error={errors.password?.message as string}
+            error={errors.password?.message}
           />
 
           <FormInput
-            text="Konfirmasi Password"
+            label="Konfirmasi Password"
             tipe="password"
             name="confirm_password"
             register={register}
-            error={errors.confirm_password?.message as string}
+            error={errors.confirm_password?.message}
           />
         </div>
 

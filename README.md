@@ -2,22 +2,28 @@
 
 ![INVOFEST Banner](https://www.invofest-harkatnegeri.com/assets/nav-logo.png)
 
-**INVOFEST (Informatics Vocational Festival)** adalah proyek re-engineering landing page festival vokasi informatika tahunan. Proyek ini bertujuan untuk menciptakan antarmuka yang modern, premium, dan responsif dengan fokus pada pengalaman pengguna yang luar biasa (*User Experience*) dan keselarasan visual yang tinggi (*High Fidelity*).
+**INVOFEST (Informatics Vocational Festival)** adalah proyek re-engineering festival vokasi informatika tahunan. Proyek ini bertujuan untuk menciptakan antarmuka yang modern, premium, dan responsif dengan fokus pada pengalaman pengguna yang luar biasa (*User Experience*) dan sistem manajemen konten yang efisien.
 
 ## 🚀 Fitur Utama
 
-- **Desain Premium & Modern**: Menggunakan palet warna brand INVOFEST (Maroon #8B1E3F) dengan aksen *glassmorphism* dan transisi *wave* yang dinamis.
-- **Halaman Event Lengkap**: Dokumentasi visual dan informasi detail untuk Seminar, Workshop, Talkshow, dan Kompetisi.
-- **Komponen Reusable**: Arsitektur berbasis komponen seperti `SpeakerCard`, `HeroSection`, `Collaps` (FAQ), dan `FormInput`.
-- **Sistem Otentikasi Terpadu**: Halaman Login dan Register yang simetris dan divalidasi menggunakan Zod & React Hook Form.
-- **Responsif Penuh**: Layout yang dioptimalkan untuk berbagai ukuran perangkat (Desktop, Tablet, Mobile).
-- **SEO Optimized**: Struktur HTML semantik untuk visibilitas mesin pencari yang lebih baik.
+- **Desain Premium & Modern**: Menggunakan palet warna brand INVOFEST (Maroon #8B1E3F) dengan transisi yang dinamis dan layout full-screen.
+- **Administrative Dashboard**: Panel admin lengkap untuk mengelola konten festival secara real-time.
+- **Content Management (CRUD)**:
+    - **Categories**: Kelola kategori event (Seminar, Workshop, dll).
+    - **Events**: Manajemen daftar event, lokasi, dan jadwal.
+    - **Speakers**: Kelola data pembicara/narasumber beserta foto dan role mereka.
+- **Sistem Otentikasi & Authorization**:
+    - Proteksi rute menggunakan `ProtectedRoute`.
+    - Manajemen state login menggunakan **Zustand**.
+- **Validasi Form Canggih**: Validasi real-time menggunakan **Zod** dan **React Hook Form** dengan feedback visual (error states).
+- **Komponen Reusable**: Arsitektur berbasis komponen UI atomik yang konsisten di seluruh aplikasi.
 
 ## 🛠️ Tech Stack
 
 - **Framework**: [React 19](https://react.dev/)
 - **Build Tool**: [Vite 8](https://vitejs.dev/)
-- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/) & Vanilla CSS
+- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
+- **State Management**: [Zustand](https://zustand-demo.pmnd.rs/) (Auth Store)
 - **Routing**: [React Router Dom 7](https://reactrouter.com/)
 - **Icons**: [Lucide React](https://lucide.dev/)
 - **Validation**: [Zod](https://zod.dev/) & [React Hook Form](https://react-hook-form.com/)
@@ -26,21 +32,26 @@
 
 ```text
 src/
-├── components/         # Komponen UI yang dapat digunakan kembali
+├── components/         # Komponen UI global
 │   ├── ui/             # Komponen atomik (Button, Input, Card, dll)
-│   ├── Header.tsx      # Navigasi utama
-│   └── Footer.tsx      # Footer global
-├── layout/             # Wrapper layout (MainLayout, AuthLayout)
+│   ├── FormInput.tsx   # Komponen form terintegrasi validasi
+│   ├── Header.tsx      # Navigasi landing page
+│   └── Footer.tsx      # Footer landing page
+├── layout/             # Wrapper layout
+│   ├── MainLayout.tsx  # Layout halaman publik
+│   ├── AuthLayout.tsx  # Layout halaman login/register
+│   └── DashboardLayout.tsx # Layout panel admin (Sidebar & Content)
 ├── pages/              # Halaman utama aplikasi
-│   ├── Beranda.tsx
-│   ├── Competition.tsx
-│   ├── Seminar.tsx
-│   ├── Workshop.tsx
-│   ├── Talkshow.tsx
+│   ├── Dashboard/      # Halaman-halaman Panel Admin
+│   │   ├── Categories/ # Manajemen Kategori, Event, & Speaker
+│   │   └── DashboardIndex.tsx
+│   ├── Beranda.tsx     # Landing Page
 │   ├── Login.tsx
 │   └── register.tsx
-├── App.tsx             # Konfigurasi routing
-└── main.tsx            # Entry point aplikasi
+├── store/              # State management (Zustand)
+├── routes/             # Proteksi rute (ProtectedRoute)
+├── App.tsx             # Konfigurasi routing utama
+└── main.tsx            # Entry point
 ```
 
 ## 🏁 Memulai (Local Setup)
@@ -61,10 +72,10 @@ src/
    ```
    Aplikasi akan berjalan di `http://localhost:5173/`
 
-4. **Build untuk produksi**
-   ```bash
-   npm run build
-   ```
+4. **Akses Dashboard**
+   Gunakan kredensial admin (default):
+   - **Email**: `admin@gmail.com`
+   - **Password**: `admin123456`
 
 ## ✒️ Penulis
 

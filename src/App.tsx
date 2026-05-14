@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router";
 import Beranda from "./pages/Beranda";
+
 import Competition from "./pages/Competition";
 import Login from "./pages/Login";
 import Register from "./pages/register";
@@ -11,7 +12,13 @@ import AuthLayout from "./layout/AuthLayout";
 import CreateCategories from "./pages/Dashboard/Categories/CreateCategories";
 import EventList from "./pages/Dashboard/Categories/Event/EventList";
 import CreateNewSpeaker from "./pages/Dashboard/Categories/Speakers/CreateNewSpeaker";
+import SpeakerList from "./pages/Dashboard/Categories/Speakers/SpeakerList";
 import CreateNewEvent from "./pages/Dashboard/Categories/Event/CreateNewEvent";
+import DashboardIndex from "./pages/Dashboard/DashboardIndex";
+import ProtectedRoute from "./routes/ProtectedRoute";
+import CategoriesList from "./pages/Dashboard/Categories/CategoriesList";
+import DashboardLayout from "./layout/DashboardLayout";
+
 
 function App() {
   return (
@@ -24,12 +31,20 @@ function App() {
           <Route path="/seminar" element={<Seminar />} />
           <Route path="/talkshow" element={<Talkshow />} />
           <Route path="/workshop" element={<Workshop />} />
-          <Route path="/category" element={<CreateCategories />} />
-          <Route path="/event" element={<EventList />} />
-          <Route path="/create-event" element={<CreateNewEvent />} />
-          <Route path="/NewSpeaker" element={<CreateNewSpeaker />} />
         </Route>
 
+        {/* Dashboard Protected Routes */}
+        <Route element={<ProtectedRoute />}>
+          <Route path="/dashboard" element={<DashboardLayout />}>
+            <Route index element={<DashboardIndex />} />
+            <Route path="category" element={<CategoriesList />} />
+            <Route path="category/create" element={<CreateCategories />} />
+            <Route path="category/event/:id" element={<EventList />} />
+            <Route path="category/event/create" element={<CreateNewEvent />} />
+            <Route path="category/speaker" element={<SpeakerList />} />
+            <Route path="category/speaker/create" element={<CreateNewSpeaker />} />
+          </Route>
+        </Route>
 
         {/* Auth Page */}
         <Route element={<AuthLayout />}>

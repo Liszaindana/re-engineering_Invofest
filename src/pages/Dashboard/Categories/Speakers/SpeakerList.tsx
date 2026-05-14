@@ -1,26 +1,24 @@
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const events = [
-    { id: 1, name: "Seminar Nasional IT", date: "2026-06-15", location: "Aula Gedung A", category: "Seminar" },
-    { id: 2, name: "Workshop React Native", date: "2026-06-16", location: "Lab Komputer 1", category: "Workshop" },
-    { id: 3, name: "Talkshow Startup", date: "2026-06-17", location: "Auditorium Utama", category: "Talkshow" },
+const speakers = [
+    { id: 1, name: "Budi Santoso", category: "Seminar" },
+    { id: 2, name: "Siti Aminah", category: "Workshop" },
 ];
 
-export default function EventList() {
-    const { id } = useParams();
+export default function SpeakerList() {
 
     return (
-        <div className="w-full">
+        <div>
             <div className="flex justify-between items-center mb-6">
                 <div>
-                    <h1 className="text-2xl font-bold text-gray-800">Events Management</h1>
-                    <p className="text-gray-500 text-sm">Showing events for Category ID: {id || 'All'}</p>
+                    <h1 className="text-2xl font-bold text-gray-800">Speakers Management</h1>
+                    <p className="text-gray-500 text-sm">Manage your event speakers here</p>
                 </div>
                 <Link 
-                    to="/dashboard/category/event/create" 
+                    to="/dashboard/category/speaker/create" 
                     className="px-4 py-2 bg-[#8B1E3F] text-white rounded-lg font-semibold hover:bg-[#6b1731] transition-colors"
                 >
-                    + Add New Event
+                    + Add New Speaker
                 </Link>
             </div>
 
@@ -29,19 +27,17 @@ export default function EventList() {
                     <thead className="bg-gray-50">
                         <tr>
                             <th className="p-4 font-semibold text-gray-600 border-b">No</th>
-                            <th className="p-4 font-semibold text-gray-600 border-b">Event Name</th>
-                            <th className="p-4 font-semibold text-gray-600 border-b">Date</th>
-                            <th className="p-4 font-semibold text-gray-600 border-b">Location</th>
+                            <th className="p-4 font-semibold text-gray-600 border-b">Name</th>
+                            <th className="p-4 font-semibold text-gray-600 border-b">Category</th>
                             <th className="p-4 font-semibold text-gray-600 border-b">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {events.map((event, index) => (
-                            <tr key={event.id} className="hover:bg-gray-50 transition-colors">
+                        {speakers.map((speaker, index) => (
+                            <tr key={speaker.id} className="hover:bg-gray-50 transition-colors">
                                 <td className="p-4 border-b text-gray-700">{index + 1}</td>
-                                <td className="p-4 border-b text-gray-700 font-medium">{event.name}</td>
-                                <td className="p-4 border-b text-gray-700">{event.date}</td>
-                                <td className="p-4 border-b text-gray-700">{event.location}</td>
+                                <td className="p-4 border-b text-gray-700 font-medium">{speaker.name}</td>
+                                <td className="p-4 border-b text-gray-700">{speaker.category}</td>
                                 <td className="p-4 border-b text-gray-700">
                                     <div className="flex gap-3">
                                         <button className="text-blue-600 hover:underline text-sm font-semibold">Edit</button>
