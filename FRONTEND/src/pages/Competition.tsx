@@ -20,7 +20,7 @@ export default function Competition() {
   useEffect(() => {
     const fetchCompetitions = async () => {
       try {
-        const res = await fetch("http://localhost:3000/events");
+        const res = await fetch("https://backend-invofest.vercel.app/events");
         const data = await res.json();
         // Filter event yang memiliki kategori "Competition"
         const filtered = data.filter((event: EventType) => event.category === "Competition");

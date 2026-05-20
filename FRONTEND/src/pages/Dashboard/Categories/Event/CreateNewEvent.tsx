@@ -39,8 +39,8 @@ export default function CreateNewEvent() {
         const fetchData = async () => {
             try {
                 const [catRes, speakRes] = await Promise.all([
-                    fetch("http://localhost:3000/categories"),
-                    fetch("http://localhost:3000/speakers")
+                    fetch("https://backend-invofest.vercel.app/categories"),
+                    fetch("https://backend-invofest.vercel.app/speakers")
                 ]);
                 const catData = await catRes.json();
                 const speakData = await speakRes.json();
@@ -57,7 +57,7 @@ export default function CreateNewEvent() {
     const onSubmit = async (data: FormData) => {
         setIsLoading(true);
         try {
-            const response = await fetch("http://localhost:3000/events", {
+            const response = await fetch("https://backend-invofest.vercel.app/events", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

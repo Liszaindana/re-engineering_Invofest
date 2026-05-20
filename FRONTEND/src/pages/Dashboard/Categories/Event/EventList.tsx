@@ -32,7 +32,7 @@ export default function EventList() {
 
     const fetchEvents = async () => {
         try {
-            const response = await fetch("http://localhost:3000/events");
+            const response = await fetch("https://backend-invofest.vercel.app/events");
             const data = await response.json();
             if (Array.isArray(data)) {
                 setEvents(data);
@@ -53,8 +53,8 @@ export default function EventList() {
     const loadCategoriesAndSpeakers = async () => {
         try {
             const [catRes, speakRes] = await Promise.all([
-                fetch("http://localhost:3000/categories"),
-                fetch("http://localhost:3000/speakers")
+                fetch("https://backend-invofest.vercel.app/categories"),
+                fetch("https://backend-invofest.vercel.app/speakers")
             ]);
             const catData = await catRes.json();
             const speakData = await speakRes.json();
@@ -80,7 +80,7 @@ export default function EventList() {
     const handleDelete = async (eventId: number) => {
         if (window.confirm("Apakah Anda yakin ingin menghapus event ini?")) {
             try {
-                const response = await fetch(`http://localhost:3000/events/${eventId}`, {
+                const response = await fetch(`https://backend-invofest.vercel.app/events/${eventId}`, {
                     method: "DELETE",
                 });
                 if (response.ok) {
@@ -100,7 +100,7 @@ export default function EventList() {
         if (!selectedEvent) return;
 
         try {
-            const response = await fetch(`http://localhost:3000/events/${selectedEvent.id}`, {
+            const response = await fetch(`https://backend-invofest.vercel.app/events/${selectedEvent.id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",

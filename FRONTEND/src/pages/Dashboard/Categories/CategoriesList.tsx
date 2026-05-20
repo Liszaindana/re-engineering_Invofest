@@ -16,7 +16,7 @@ export default function CategoriesList() {
 
     const fetchCategories = async () => {
         try {
-            const response = await fetch("http://localhost:3000/categories");
+            const response = await fetch("https://backend-invofest.vercel.app/categories");
             const data = await response.json();
             if (Array.isArray(data)) {
                 setCategories(data);
@@ -36,7 +36,7 @@ export default function CategoriesList() {
     const handleDelete = async (id: number) => {
         if (window.confirm("Apakah Anda yakin ingin menghapus kategori ini?")) {
             try {
-                const response = await fetch(`http://localhost:3000/categories/${id}`, {
+                const response = await fetch(`https://backend-invofest.vercel.app/categories/${id}`, {
                     method: "DELETE"
                 });
                 if (response.ok) {
@@ -66,7 +66,7 @@ export default function CategoriesList() {
         }
 
         try {
-            const response = await fetch(`http://localhost:3000/categories/${selectedCategory.id}`, {
+            const response = await fetch(`https://backend-invofest.vercel.app/categories/${selectedCategory.id}`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ name: editName })

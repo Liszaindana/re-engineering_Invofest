@@ -25,7 +25,7 @@ export default function SpeakerList() {
 
     const fetchSpeakers = async () => {
         try {
-            const response = await fetch("http://localhost:3000/speakers");
+            const response = await fetch("https://backend-invofest.vercel.app/speakers");
             const data = await response.json();
             if (Array.isArray(data)) {
                 setSpeakers(data);
@@ -40,7 +40,7 @@ export default function SpeakerList() {
 
     const fetchCategories = async () => {
         try {
-            const response = await fetch("http://localhost:3000/categories");
+            const response = await fetch("https://backend-invofest.vercel.app/categories");
             const data = await response.json();
             if (Array.isArray(data)) {
                 setCategories(data);
@@ -67,7 +67,7 @@ export default function SpeakerList() {
     const handleDelete = async (id: number) => {
         if (window.confirm("Apakah Anda yakin ingin menghapus pembicara ini?")) {
             try {
-                const response = await fetch(`http://localhost:3000/speakers/${id}`, {
+                const response = await fetch(`https://backend-invofest.vercel.app/speakers/${id}`, {
                     method: "DELETE"
                 });
                 if (response.ok) {
@@ -116,13 +116,13 @@ export default function SpeakerList() {
     setSelectedSpeaker(null);
 
     // Fire API calls without awaiting to avoid UI blocking
-    fetch(`http://localhost:3000/speakers/${selectedSpeaker.id}`, {
+    fetch(`https://backend-invofest.vercel.app/speakers/${selectedSpeaker.id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name: editName, role: editRole, image: editImageUrl })
     }).catch(err => console.error('Error updating speaker:', err));
 
-    fetch(`http://localhost:3000/speakers/${selectedSpeaker.id}/categories`, {
+    fetch(`https://backend-invofest.vercel.app/speakers/${selectedSpeaker.id}/categories`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ categoryIds: editCategoryIds })

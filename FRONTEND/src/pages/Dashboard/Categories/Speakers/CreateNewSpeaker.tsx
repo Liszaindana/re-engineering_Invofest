@@ -34,7 +34,7 @@ export default function CreateSpeaker() {
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                const response = await fetch("http://localhost:3000/categories");
+                const response = await fetch("https://backend-invofest.vercel.app/categories");
                 const data = await response.json();
                 if (Array.isArray(data)) setCategories(data);
             } catch (error) {
@@ -48,7 +48,7 @@ export default function CreateSpeaker() {
         setIsLoading(true);
         try {
             // 1. Simpan speaker
-            const response = await fetch("http://localhost:3000/speakers", {
+            const response = await fetch("https://backend-invofest.vercel.app/speakers", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
@@ -64,7 +64,7 @@ export default function CreateSpeaker() {
 
                 // 2. Assign kategori jika ada yang dipilih
                 if (newSpeakerId && selectedCategoryIds.length > 0) {
-                    await fetch(`http://localhost:3000/speakers/${newSpeakerId}/categories`, {
+                    await fetch(`https://backend-invofest.vercel.app/speakers/${newSpeakerId}/categories`, {
                         method: "PUT",
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify({ categoryIds: selectedCategoryIds }),

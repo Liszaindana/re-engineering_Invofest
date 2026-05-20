@@ -15,9 +15,9 @@ export default function DashboardIndex() {
         const fetchStats = async () => {
             try {
                 const [eventsRes, speakersRes, categoriesRes] = await Promise.all([
-                    fetch("http://localhost:3000/events").catch(() => null),
-                    fetch("http://localhost:3000/speakers").catch(() => null),
-                    fetch("http://localhost:3000/categories").catch(() => null)
+                    fetch("https://backend-invofest.vercel.app/events").catch(() => null),
+                    fetch("https://backend-invofest.vercel.app/speakers").catch(() => null),
+                    fetch("https://backend-invofest.vercel.app/categories").catch(() => null)
                 ]);
 
                 const eventsData = eventsRes ? await eventsRes.json() : [];

@@ -20,7 +20,7 @@ export default function Talkshow() {
   useEffect(() => {
     const fetchSpeakers = async () => {
       try {
-        const res = await fetch("http://localhost:3000/speakers");
+        const res = await fetch("https://backend-invofest.vercel.app/speakers");
         const data = await res.json();
         setSpeakers(data);
       } catch (error) {

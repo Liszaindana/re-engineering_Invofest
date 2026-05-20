@@ -15,7 +15,7 @@ export default function Seminar() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const speakersRes = await fetch("http://localhost:3000/speakers");
+        const speakersRes = await fetch("https://backend-invofest.vercel.app/speakers");
         const speakersData = await speakersRes.json();
         if (Array.isArray(speakersData)) setSpeakers(speakersData);
       } catch (error) {
